@@ -7,3 +7,18 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+
+## 사칙 연산 
+# 기능
+* 입력받은 문자열을 파싱하여 리스트에 넣는다. 
+    * 숫자는 숫자 리스트에 연산자는 연산자 리스트에 넣는다.
+* 덧셈 기능이 잘되는지 확인한다
+* 뺄셈 기능이 잘되는지 확인한다
+* 곱셉 기능이 잘되는지 확인한다
+* 나눗셈 기능이 잘되는지 확인한다
+
+
+# 예외처리
+* 빈문자열이 입력되면 IllegalArgumentException 을 던진다.
+* 사칙연산 기호가 아닌 경우 IllegalArgumentException 을 던진다.
