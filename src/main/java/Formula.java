@@ -1,11 +1,7 @@
-import java.util.List;
 
 public class Formula {
     private final String[] formula ;
-    private int idx = 0 ;
-    private int firstNo = 0;
-    private String sign;
-    private int lastNo = 0;
+
 
     public Formula(String[] s) {
         this.formula = s;
@@ -15,11 +11,13 @@ public class Formula {
         if( this.formula == null || this.formula.length == 0) {
             throw new IllegalArgumentException();
         }
-
     }
 
     public CalResult calculate() {
-
+        int idx = 0 ;
+        int firstNo = 0;
+        String sign;
+        int lastNo = 0;
         int result = 0;
 
         while (formula.length-1 > idx) {
@@ -36,7 +34,6 @@ public class Formula {
             Calculate cal = new Calculate(firstNo, sign, lastNo);
             result = cal.calculate();
         }
-
         return new CalResult(result);
     }
 
