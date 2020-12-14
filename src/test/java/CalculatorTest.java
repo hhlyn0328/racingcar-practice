@@ -18,27 +18,16 @@ public class CalculatorTest {
     @Test
     public void division() {
         assertThat(Operator.DIVISION.calculate(3, 3)).isEqualTo(1);
+        assertThat(Operator.DIVISION.calculate(0, 1)).isEqualTo(0);
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            Operator.DIVISION.calculate(1, 0);
+        });
+
     }
 
     @Test
     public void multiply() {
         assertThat(Operator.MULTIPLY.calculate(3, 3)).isEqualTo(9);
-    }
-
-    @Test
-    public void numberNullTest() {
-        CalculatorValidationUtil calculatorValidationUtil = new CalculatorValidationUtil();
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorValidationUtil.numberIsNotNull(null);
-        });
-    }
-
-    @Test
-    public void symbolValidationTest() {
-        CalculatorValidationUtil calculatorValidationUtil = new CalculatorValidationUtil();
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorValidationUtil.symbolValidation("=");
-        });
     }
 
     @Test

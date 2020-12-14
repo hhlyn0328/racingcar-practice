@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Calculator {
 
+    final String BLANK = " ";
     private List<Integer> numbers = new ArrayList<>();
     private List<String> symbols = new ArrayList<>();
 
@@ -10,15 +11,24 @@ public class Calculator {
         return i % 2 == 1;
     }
 
-    void parseInput(String input) {
-        String[] splitedInput = input.split(" ");
+    private void parseInput(String input) {
+        String[] splitedInput = input.split(BLANK);
         for (int i = 0; i < splitedInput.length; i++) {
-            if (isSymbolIndex(i)) {
-                this.symbols.add(splitedInput[i]);
-            } else {
-                this.numbers.add(Integer.parseInt(splitedInput[i]));
-            }
+            addSymbolAndNumber(splitedInput, i);
         }
+    }
+
+    private void addSymbolAndNumber(String[] splitedInput, int i) {
+        CalculatorValidationUtil calculatorValidationUtil = new CalculatorValidationUtil();
+
+        if (isSymbolIndex(i)) {
+            calculatorValidationUtil.symbolValidation(splitedInput[i]);
+            this.symbols.add(splitedInput[i]);
+            return;
+        }
+
+        calculatorValidationUtil.numberIsNotNull(Integer.parseInt(splitedInput[i]));
+        this.numbers.add(Integer.parseInt(splitedInput[i]));
     }
 
     public int calculation(int firstNumber, String symbol, int secondNumber) {
