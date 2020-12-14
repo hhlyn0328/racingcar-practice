@@ -1,15 +1,10 @@
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Operator {
-    PLUS("+", (x, y) -> {
-        return x + y;
-    }),
-    MINUS("-", (x, y) -> {
-        return x - y;
-    }),
-    MULTIPLY("*", (x, y) -> {
-        return x * y;
-    }),
+    PLUS("+", (x, y) -> x + y),
+    MINUS("-", (x, y) -> x - y),
+    MULTIPLY("*", (x, y) -> x * y),
     DIVIDE("/", (x, y) -> {
         validateDivide(y);
         return x / y;
@@ -25,25 +20,20 @@ public enum Operator {
     }
 
     public static Operator valueOfSign(String sign) {
-        switch (sign) {
-            case "+" : return Operator.PLUS;
-            case "-" : return Operator.MINUS;
-            case "*" : return Operator.MULTIPLY;
-            case "/" : return Operator.DIVIDE;
-            default:
-                throw new IllegalArgumentException();
-
-        }
+        return Arrays.stream(Operator.values())
+                .filter(operator -> operator.operator.equals(sign) )
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
-    public static int calculate(Operator o, int x, int y) {
-        return o.function.apply(x, y);
+    public  int calculate(int x, int y) {
+        return this.function.apply(x, y);
     }
 
     public static boolean validateDivide(int number) {
-        if(number !=0 ) {
-            return true;
+        if(number == 0 ) {
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException();
+        return false;
     }
 
 
