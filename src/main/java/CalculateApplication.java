@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
-public class Main {
+public class CalculateApplication {
     public static void main(String[] args) {
-        Scanner formula = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("연산식 입력 . >> ");
-        String formulaString = formula.nextLine();
-        String[] formulas = formulaString.split(" ");
+        String formula = input.nextLine();
+        String[] formulas = formula.split(" ");
 
         Formula reqFormula = new Formula(formulas);
 

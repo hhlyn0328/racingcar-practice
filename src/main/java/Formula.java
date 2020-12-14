@@ -14,37 +14,24 @@ public class Formula {
     }
 
     public CalResult calculate() {
-        int idx = 0 ;
-        int firstNo = 0;
-        String sign;
-        int lastNo = 0;
-        int result = 0;
 
-        while (formula.length-1 > idx) {
+        int firstNo = getNumber(0);
 
-            if(idx == 0) {
-                firstNo = getNumber(idx);
-            } else {
-                firstNo = result;
-            }
-
-            sign = getSign(++idx);
-            lastNo = getNumber(++idx);
-
-            Calculate cal = new Calculate(firstNo, sign, lastNo);
-            result = cal.calculate();
+        for (int i = 1; i < formula.length; i += 2) {
+            firstNo = Calculate.calculate(firstNo, getSign(i), getNumber(i+1));
         }
-        return new CalResult(result);
+
+        return new CalResult(firstNo);
     }
 
-    public String getSign(int idx) {
+    private String getSign(int idx) {
         if(!isSign(this.formula[idx])) {
             throw new IllegalArgumentException();
         }
         return this.formula[idx];
     }
 
-    public int getNumber(int idx) {
+    private int getNumber(int idx) {
         return Integer.parseInt(this.formula[idx]);
     }
 
@@ -54,4 +41,5 @@ public class Formula {
         }
         return false;
     }
+
 }

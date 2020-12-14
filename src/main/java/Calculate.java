@@ -1,26 +1,22 @@
 public class Calculate {
-    private static String sign;
-    private static int firstNo;
-    private static int lastNo;
-
-    public Calculate(int firstNo, String sign, int lastNo) {
-        this.firstNo = firstNo;
-        this.lastNo = lastNo;
-        this.sign = sign;
-    }
-
-    public static int calculate() {
+    public static int calculate(int firstNo, String sign, int lastNo) {
 
         switch (sign) {
             case "+" :
-                return firstNo + lastNo;
+                return Operator.PLUS.calculate(firstNo, lastNo);
             case "-" :
-                return firstNo - lastNo;
+                return Operator.MINUS.calculate(firstNo, lastNo);
             case "*" :
-                return firstNo * lastNo;
+                return Operator.MULTIPLY.calculate(firstNo, lastNo);
             case "/" :
-                return firstNo / lastNo;
+
+                if(lastNo == 0) {
+                    throw new IllegalArgumentException();
+                }
+                return Operator.DIVIDE.calculate(firstNo, lastNo);
+            default:
+                throw new IllegalArgumentException();
+
         }
-        return 0;
     }
 }
