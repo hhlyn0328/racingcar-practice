@@ -29,11 +29,10 @@ public enum Operator {
         return this.function.apply(x, y);
     }
 
-    public static boolean validateDivide(int number) {
+    public static void validateDivide(int number) {
         if(number == 0 ) {
             throw new IllegalArgumentException();
         }
-        return false;
     }
 
 
