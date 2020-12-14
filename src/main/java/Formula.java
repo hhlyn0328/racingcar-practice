@@ -18,7 +18,7 @@ public class Formula {
         int firstNo = getNumber(0);
 
         for (int i = 1; i < formula.length; i += 2) {
-            firstNo = Calculate.calculate(firstNo, getSign(i), getNumber(i+1));
+            firstNo = Calculator.calculate(firstNo, getSign(i), getNumber(i+1));
         }
 
         return new CalResult(firstNo);

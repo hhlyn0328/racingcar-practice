@@ -35,8 +35,8 @@ public class FormulaTest {
     }
 
     @Test
-    void notAllowSignTest() {
-        String[] string = {"2","^","3","*","4","/","0"};
+    void notAllowOtherSignTest() {
+        String[] string = {"2","^","3","*","4"};
         Formula formula = new Formula(string);
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {

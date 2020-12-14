@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class CalculateApplication {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("연산식 입력 . >> ");
-        String formula = input.nextLine();
+        String formula = scanner.nextLine();
         String[] formulas = formula.split(" ");
 
         Formula reqFormula = new Formula(formulas);
