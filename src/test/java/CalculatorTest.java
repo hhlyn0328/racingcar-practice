@@ -31,6 +31,14 @@ public class CalculatorTest {
     }
 
     @Test
+    public void calculationEmptySymbol() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            Calculator calculator = new Calculator();
+            assertThat(calculator.calculation(1, "", 3)).isEqualTo(4);
+        });
+    }
+
+    @Test
     public void calculation() {
         Calculator calculator = new Calculator();
         assertThat(calculator.calculation(1, "+", 3)).isEqualTo(4);

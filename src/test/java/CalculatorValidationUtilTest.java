@@ -6,17 +6,8 @@ class CalculatorValidationUtilTest {
 
     @Test
     void numberIsNotNull() {
-        CalculatorValidationUtil calculatorValidationUtil = new CalculatorValidationUtil();
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorValidationUtil.numberIsNotNull(null);
-        });
-    }
-
-    @Test
-    void symbolValidation() {
-        CalculatorValidationUtil calculatorValidationUtil = new CalculatorValidationUtil();
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            calculatorValidationUtil.symbolValidation("=");
+            CalculatorValidationUtil.numberIsNotNull(null);
         });
     }
 

@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Calculator {
 
-    final String BLANK = " ";
+    private static final String BLANK = " ";
     private List<Integer> numbers = new ArrayList<>();
     private List<String> symbols = new ArrayList<>();
 
@@ -19,30 +19,18 @@ public class Calculator {
     }
 
     private void addSymbolAndNumber(String[] splitedInput, int i) {
-        CalculatorValidationUtil calculatorValidationUtil = new CalculatorValidationUtil();
 
         if (isSymbolIndex(i)) {
-            calculatorValidationUtil.symbolValidation(splitedInput[i]);
             this.symbols.add(splitedInput[i]);
             return;
         }
 
-        calculatorValidationUtil.numberIsNotNull(Integer.parseInt(splitedInput[i]));
+        CalculatorValidationUtil.numberIsNotNull(Integer.parseInt(splitedInput[i]));
         this.numbers.add(Integer.parseInt(splitedInput[i]));
     }
 
     public int calculation(int firstNumber, String symbol, int secondNumber) {
-        switch (symbol) {
-            case "+":
-                return Operator.PLUS.calculate(firstNumber, secondNumber);
-            case "-":
-                return Operator.MINUS.calculate(firstNumber, secondNumber);
-            case "/":
-                return Operator.DIVISION.calculate(firstNumber, secondNumber);
-            case "*":
-                return Operator.MULTIPLY.calculate(firstNumber, secondNumber);
-        }
-        return 0;
+        return Operator.valueOfSymbol(symbol).calculate(firstNumber, secondNumber);
     }
 
     public int totalCalculation(String input) {
