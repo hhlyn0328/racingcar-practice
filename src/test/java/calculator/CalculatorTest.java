@@ -1,3 +1,5 @@
+package calculator;
+
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -7,27 +9,30 @@ public class CalculatorTest {
 
     @Test
     public void plus() {
-        assertThat(Operator.PLUS.calculate(1, 2)).isEqualTo(3);
+        Calculator calculator = new Calculator();
+        assertThat(calculator.calculation(1, "+", 2)).isEqualTo(3);
     }
 
     @Test
     public void minus() {
-        assertThat(Operator.MINUS.calculate(1, 1)).isEqualTo(0);
+        Calculator calculator = new Calculator();
+        assertThat(calculator.calculation(1, "-", 1)).isEqualTo(0);
     }
 
     @Test
     public void division() {
-        assertThat(Operator.DIVISION.calculate(3, 3)).isEqualTo(1);
-        assertThat(Operator.DIVISION.calculate(0, 1)).isEqualTo(0);
+        Calculator calculator = new Calculator();
+        assertThat(calculator.calculation(3, "/", 3)).isEqualTo(1);
+        assertThat(calculator.calculation(0, "/", 1)).isEqualTo(0);
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            Operator.DIVISION.calculate(1, 0);
+            calculator.calculation(1, "/", 0);
         });
-
     }
 
     @Test
     public void multiply() {
-        assertThat(Operator.MULTIPLY.calculate(3, 3)).isEqualTo(9);
+        Calculator calculator = new Calculator();
+        assertThat(calculator.calculation(3, "*", 3)).isEqualTo(9);
     }
 
     @Test
@@ -42,6 +47,9 @@ public class CalculatorTest {
     public void calculation() {
         Calculator calculator = new Calculator();
         assertThat(calculator.calculation(1, "+", 3)).isEqualTo(4);
+        assertThat(calculator.calculation(1, "-", 1)).isEqualTo(0);
+        assertThat(calculator.calculation(9, "/", 3)).isEqualTo(3);
+        assertThat(calculator.calculation(3, "*", 3)).isEqualTo(9);
     }
 
     @Test
