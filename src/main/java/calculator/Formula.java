@@ -1,3 +1,7 @@
+package calculator;
+
+import calculator.CalResult;
+import calculator.Calculator;
 
 public class Formula {
     private final String[] formula ;
