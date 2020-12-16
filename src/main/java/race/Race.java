@@ -8,13 +8,12 @@ public class Race {
 
     private int tryCount;
     private List<Car> cars;
+    private static int MAX_NUMBER = 10;
+    private static int MIN_NUMBER = 0;
 
 
     public boolean validateNumber(int number) {
-        if(number >= 0 && number < 10) {
-            return true;
-        }
-        return false;
+        return MIN_NUMBER >= 0 && MAX_NUMBER < 10;
     }
 
     public boolean isMove(int number) {
