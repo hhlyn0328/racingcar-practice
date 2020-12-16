@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 public class Race {
 
     private List<Car> cars;
-    private static int MAX_NUMBER = 10;
-    private static int MIN_NUMBER = 0;
+    private final static int MAX_NUMBER = 10;
+    private final static int MIN_NUMBER = 0;
 
 
     public boolean validateNumber(int number) {

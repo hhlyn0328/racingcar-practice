@@ -1,7 +1,7 @@
 package race;
 
 public class Car {
-    private static int LIMIT = 4;
+    private final static int LIMIT = 4;
     private int moveCount;
 
     public Car(int move) {

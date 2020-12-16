@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ResultView {
     private final List<Race> result;
+    private final static String PRINT_TEXT = "-";
 
     public ResultView(List<Race> raceResult) {
         this.result = raceResult;
@@ -25,7 +26,7 @@ public class ResultView {
 
     private void printMove(Car car) {
         for(int i=0; i< car.getMove(); i++) {
-            System.out.print("-");
+            System.out.print(PRINT_TEXT);
         }
 
     }
