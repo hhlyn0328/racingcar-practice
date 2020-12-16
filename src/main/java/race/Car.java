@@ -1,6 +1,7 @@
 package race;
 
 public class Car {
+    private static int limit = 4;
     private int moveCount;
 
     public Car(int move) {
@@ -12,7 +13,7 @@ public class Car {
     }
 
     public void move(int number) {
-        if( number >= 4) {
+        if( number >= limit) {
             this.moveCount += 1;
         }
 
