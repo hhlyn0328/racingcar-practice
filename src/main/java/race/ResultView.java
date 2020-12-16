@@ -13,16 +13,20 @@ public class ResultView {
         for(int i=0; i< this.result.size(); i++){
             System.out.println(i+1 + " 회");
 
+
             this.result.get(i).getCars().forEach(car -> {
-                int ii =0;
-                while(ii< car.getMove()) {
-                    System.out.print( "-");
-                    ii++;
-                }
+                this.printMove(car);
                 System.out.println();
             });
             System.out.println();
 
         }
+    }
+
+    private void printMove(Car car) {
+        for(int i=0; i< car.getMove(); i++) {
+            System.out.print("-");
+        }
+
     }
 }
