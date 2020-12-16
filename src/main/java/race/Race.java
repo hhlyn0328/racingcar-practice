@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class Race {
 
-    private int tryCount;
     private List<Car> cars;
     private static int MAX_NUMBER = 10;
     private static int MIN_NUMBER = 0;
@@ -21,8 +20,7 @@ public class Race {
         return randomNumber.nextInt(9);
     }
 
-    public void race(int tryCount, List<Car> cars) {
-        this.tryCount = tryCount;
+    public void race( List<Car> cars) {
 
         this.cars = cars.stream()
                 .map(car -> {
@@ -36,7 +34,4 @@ public class Race {
         return cars;
     }
 
-    public int getTryCount() {
-        return this.tryCount;
-    }
 }

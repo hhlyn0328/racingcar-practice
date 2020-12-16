@@ -12,7 +12,5 @@ public class RacingCarApplication {
         raceResult.startRace();
         ResultView resultView = new ResultView(raceResult.getRaceResult());
         resultView.print();
-
-
     }
 }

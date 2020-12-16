@@ -23,7 +23,7 @@ public class RaceResult {
         }
         for(int i=0; i< this.raceCount; i++) {
             Race race = new Race();
-            race.race(i, cars);
+            race.race(cars);
             races.add(race);
         }
         this.raceResult = races;

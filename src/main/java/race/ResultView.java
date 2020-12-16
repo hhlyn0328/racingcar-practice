@@ -10,14 +10,14 @@ public class ResultView {
     }
 
     public void print() {
-        for(Race race : this.result) {
-            System.out.println(race.getTryCount()+1 + " 회");
+        for(int i=0; i< this.result.size(); i++){
+            System.out.println(i+1 + " 회");
 
-            race.getCars().forEach(car -> {
-                int i =0;
-                while(i< car.getMove()) {
+            this.result.get(i).getCars().forEach(car -> {
+                int ii =0;
+                while(ii< car.getMove()) {
                     System.out.print( "-");
-                    i++;
+                    ii++;
                 }
                 System.out.println();
             });
