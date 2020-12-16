@@ -4,9 +4,12 @@ import race.Car;
 import race.Race;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RacingTest {
+public class RacingCarTest {
     Race race;
     @BeforeEach
     void setup() {
@@ -16,7 +19,7 @@ public class RacingTest {
     @Test
     void validateNumberTest() {
         //0~9사이의 랜덤 수 생성
-        int randomNumber = race.generateNumber();
+        int randomNumber = race.randomNumber();
         //0~9사이의 수가 아니면 에러
         boolean validNumber = race.validateNumber(randomNumber);
 
@@ -24,16 +27,17 @@ public class RacingTest {
     }
 
     @Test
-    void moveGreaterThan4Test() {
-        //4이상이면 전진하다
-        boolean move = race.isMove(5);
+    void car2RaceTest() {
+        List<Car> cars = Arrays.asList(new Car(0),new Car(0));
+        race.race(1, cars);
 
-        Car car = new Car(1);
-        if(move) {
-            car.addMove();
-        }
-        assertThat(car.getMove()).isEqualTo(1);
+        assertThat(race.getCars().size()).isEqualTo(2);
     }
+
+
+
+
+
 
 
 }

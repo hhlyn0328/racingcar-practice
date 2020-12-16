@@ -24,7 +24,7 @@ public class Race {
         return false;
     }
 
-    public int generateNumber() {
+    public int randomNumber() {
         Random randomNumber = new Random();
         return randomNumber.nextInt(9);
     }
@@ -34,9 +34,7 @@ public class Race {
 
         this.cars = cars.stream()
                 .map(car -> {
-                    if(isMove(this.generateNumber())) {
-                        car.addMove();
-                    }
+                    car.move(this.randomNumber());
                     return new Car(car.getMove());
                 }).collect(Collectors.toList());
 

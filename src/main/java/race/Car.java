@@ -7,12 +7,14 @@ public class Car {
         this.moveCount = move;
     }
 
-
-    public void addMove() {
-        this.moveCount += 1;
-    }
-
     public int getMove() {
         return this.moveCount;
+    }
+
+    public void move(int number) {
+        if( number >= 4) {
+            this.moveCount += 1;
+        }
+
     }
 }
