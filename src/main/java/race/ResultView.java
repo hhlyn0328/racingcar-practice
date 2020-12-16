@@ -3,20 +3,15 @@ package race;
 import java.util.List;
 
 public class ResultView {
-    private final List<Race> result;
     private final static String PRINT_TEXT = "-";
 
-    public ResultView(List<Race> raceResult) {
-        this.result = raceResult;
-    }
-
-    public void print() {
-        for(int i=0; i< this.result.size(); i++){
+    public static void print(List<Race> raceResult) {
+        for(int i=0; i< raceResult.size(); i++){
             System.out.println(i+1 + " 회");
 
 
-            this.result.get(i).getCars().forEach(car -> {
-                this.printMove(car);
+            raceResult.get(i).getCars().forEach(car -> {
+                printMove(car);
                 System.out.println();
             });
             System.out.println();
@@ -24,7 +19,7 @@ public class ResultView {
         }
     }
 
-    private void printMove(Car car) {
+    private static void printMove(Car car) {
         for(int i=0; i< car.getMove(); i++) {
             System.out.print(PRINT_TEXT);
         }
