@@ -16,13 +16,6 @@ public class Race {
         return MIN_NUMBER >= 0 && MAX_NUMBER < 10;
     }
 
-    public boolean isMove(int number) {
-        if(number >= 4) {
-            return true;
-        }
-        return false;
-    }
-
     public int randomNumber() {
         Random randomNumber = new Random();
         return randomNumber.nextInt(9);
