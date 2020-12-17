@@ -1,5 +1,6 @@
 package race;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -8,6 +9,13 @@ public class Cars {
     private List<Car> cars;
     private final static int MAX_NUMBER = 10;
     private final static int MIN_NUMBER = 0;
+
+    public Cars(int carCount) {
+        cars = new ArrayList<>();
+        for(int i=0 ; i< carCount ; i++) {
+            cars.add(new Car(0));
+        }
+    }
 
     public Cars(List<Car> cars) {
         this.cars = cars;

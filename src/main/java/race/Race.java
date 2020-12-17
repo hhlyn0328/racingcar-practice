@@ -11,11 +11,8 @@ public class Race {
         this.raceCount = raceCount;
     }
 
-    public void startRace(int carCount) {
-        List<Car> cars = new ArrayList<>();
-        for(int i=0 ; i< carCount ; i++) {
-            cars.add(new Car(0));
-        }
+    public void startRace(List<Car> cars) {
+
         Cars newCars = new Cars(cars);
         for(int i=0; i< this.raceCount; i++) {
             carsList.add(new Cars(race(newCars)));

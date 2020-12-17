@@ -19,4 +19,12 @@ public class CarsTest {
 
         assertThat(validNumber).isTrue();
     }
+
+    @Test
+    void createCarsTest() {
+        int carCount = 3;
+        Cars cars = new Cars(carCount);
+        assertThat(cars.getCars().size()).isEqualTo(3);
+    }
+
 }
