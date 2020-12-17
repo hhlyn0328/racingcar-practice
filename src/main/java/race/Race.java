@@ -5,22 +5,22 @@ import java.util.List;
 
 public class Race {
     private int raceCount;
-    private List<Cars> carsList = new ArrayList<>();
+    private List<CarsRacingResultByRound> carsRacingResultByRounds = new ArrayList<>();
 
     public Race(int raceCount) {
         this.raceCount = raceCount;
     }
 
-    public void startRace(List<Car> cars) {
+    public void startRace(int carCount) {
+        Cars cars = new Cars(carCount);
 
-        Cars newCars = new Cars(cars);
         for(int i=0; i< this.raceCount; i++) {
-            carsList.add(new Cars(newCars.move(newCars)));
+            carsRacingResultByRounds.add(cars.move(cars));
         }
     }
 
-    public RaceResult getRaceResult() {
-        return new RaceResult(this.carsList);
+    public List<CarsRacingResultByRound> getRaceResult() {
+        return carsRacingResultByRounds;
     }
 
 }

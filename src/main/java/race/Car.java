@@ -12,10 +12,11 @@ public class Car {
         return this.moveCount;
     }
 
-    public void move(int number) {
+    public CarRacingResult move(int number) {
         if( number >= LIMIT) {
             this.moveCount += 1;
         }
+        return new CarRacingResult(this.moveCount);
 
     }
 }

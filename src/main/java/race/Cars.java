@@ -26,12 +26,12 @@ public class Cars {
         return this.cars;
     }
 
-    public List<Car> move(Cars cars) {
-        return cars.getCars().stream()
-                .map(car -> {
-                    car.move(this.randomNumber());
-                    return new Car(car.getMove());
-                }).collect(Collectors.toList());
+    public CarsRacingResultByRound move(Cars cars) {
+        List<CarRacingResult> carRacingResults =  cars.getCars().stream()
+                .map(car -> car.move(this.randomNumber()))
+                .collect(Collectors.toList());
+
+        return new CarsRacingResultByRound(carRacingResults);
     }
 
     public int randomNumber() {
