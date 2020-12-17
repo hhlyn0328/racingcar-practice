@@ -5,11 +5,10 @@ import java.util.Scanner;
 
 public class RacingCarApplication {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
         InputView inputView = new InputView();
-        int carCount = inputView.inputCarCount(scanner);
-        int raceCount = inputView.inputRaceCount(scanner);
+        int carCount = inputView.inputCarCount();
+        int raceCount = inputView.inputRaceCount();
 
         Race race = new Race(raceCount);
         race.startRace(carCount);
