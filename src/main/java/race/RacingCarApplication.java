@@ -11,9 +11,10 @@ public class RacingCarApplication {
         int carCount = inputView.inputCarCount(scanner);
         int raceCount = inputView.inputRaceCount(scanner);
 
-        RaceResult raceResult = new RaceResult(carCount, raceCount);
-        raceResult.startRace();
+        Race race = new Race(raceCount);
+        race.startRace(carCount);
+
         ResultView resultView = new ResultView();
-        resultView.print(raceResult.getRaceResult());
+        resultView.print(race.getRaceResult());
     }
 }

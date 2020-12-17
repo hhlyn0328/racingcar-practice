@@ -1,37 +1,33 @@
 package race;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 
 public class Race {
+    private int raceCount;
+    private List<Cars> carsList = new ArrayList<>();
 
-    private List<Car> cars;
-    private final static int MAX_NUMBER = 10;
-    private final static int MIN_NUMBER = 0;
-
-
-    public boolean validateNumber(int number) {
-        return MIN_NUMBER >= 0 && MAX_NUMBER < 10;
+    public Race(int raceCount) {
+        this.raceCount = raceCount;
     }
 
-    public int randomNumber() {
-        Random randomNumber = new Random();
-        return randomNumber.nextInt(9);
+    public void startRace(int carCount) {
+        List<Car> cars = new ArrayList<>();
+        for(int i=0 ; i< carCount ; i++) {
+            cars.add(new Car(0));
+        }
+        Cars newCars = new Cars(cars);
+        for(int i=0; i< this.raceCount; i++) {
+            carsList.add(new Cars(race(newCars)));
+        }
     }
 
-    public void race( List<Car> cars) {
-
-        this.cars = cars.stream()
-                .map(car -> {
-                    car.move(this.randomNumber());
-                    return new Car(car.getMove());
-                }).collect(Collectors.toList());
-
+    public List<Car> race(Cars cars) {
+        return cars.move(cars);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public List<Cars> getRaceResult() {
+        return this.carsList;
     }
 
 }
