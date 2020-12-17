@@ -22,3 +22,9 @@
 # 예외처리
 * 빈문자열이 입력되면 IllegalArgumentException 을 던진다.
 * 사칙연산 기호가 아닌 경우 IllegalArgumentException 을 던진다.
+
+
+## 자동차 경주
+# 기능
+* 0~9 사이의 랜덤 값을 구한다
+* 4이상이면 전진한다 
