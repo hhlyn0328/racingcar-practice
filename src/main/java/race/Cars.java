@@ -9,6 +9,7 @@ public class Cars {
     private List<Car> cars;
     private final static int MAX_NUMBER = 10;
     private final static int MIN_NUMBER = 0;
+    private final static Random random = new Random();
 
     public Cars(int carCount) {
         cars = new ArrayList<>();
@@ -34,7 +35,6 @@ public class Cars {
     }
 
     public int randomNumber() {
-        Random random = new Random();
         int randomNumber = random.nextInt(9);
         if (!validateNumber(randomNumber)) {
             throw new IllegalArgumentException();

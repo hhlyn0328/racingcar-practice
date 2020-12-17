@@ -15,16 +15,12 @@ public class Race {
 
         Cars newCars = new Cars(cars);
         for(int i=0; i< this.raceCount; i++) {
-            carsList.add(new Cars(race(newCars)));
+            carsList.add(new Cars(newCars.move(newCars)));
         }
     }
 
-    public List<Car> race(Cars cars) {
-        return cars.move(cars);
-    }
-
-    public List<Cars> getRaceResult() {
-        return this.carsList;
+    public RaceResult getRaceResult() {
+        return new RaceResult(this.carsList);
     }
 
 }
