@@ -7,3 +7,9 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+# STEP 3 자동차경우 기능정리
+- 0~9까지 랜덤 숫자 출력
+- 4 이상이면 이동횟수 증가
+- 4 미만이면 이동횟수 유지
+- 입력받은 자동차 숫자만큼 자동차 생성
