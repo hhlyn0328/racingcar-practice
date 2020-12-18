@@ -1,28 +1,26 @@
 package racingcar;
 
+import java.util.List;
+
 public class ResultView {
     private static final String CAR_STRING = "-";
 
-    public static void result(int carCount, int tryCount) {
+    public static void printResult(List<CarsResultPerTry> carsResultPerTryList) {
         System.out.println("실행결과");
-
-        Cars cars = new Cars(carCount);
-
-        for (int i = 0; i < tryCount; i++) {
-            cars.carMove();
-            getCar(cars);
+        for (CarsResultPerTry carsResultPerTry : carsResultPerTryList) {
+            printCar(carsResultPerTry);
             System.out.println();
         }
     }
 
-    private static void getCar(Cars cars) {
-        for (Car car : cars.getCars()) {
-            printCarString(car);
+    private static void printCar(CarsResultPerTry carsResultPerTry) {
+        for (CarResult carResult : carsResultPerTry.getCarResultList()) {
+            printCarString(carResult);
         }
     }
 
-    private static void printCarString(Car car) {
-        for (int i = 0; i < car.getAdvanceCount(); i++) {
+    private static void printCarString(CarResult carResult) {
+        for (int i = 0; i < carResult.getAdvanceCount(); i++) {
             System.out.print(CAR_STRING);
         }
         System.out.println();

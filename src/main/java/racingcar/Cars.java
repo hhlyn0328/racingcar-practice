@@ -13,14 +13,19 @@ public class Cars {
 
     public Cars(int carCount) {
         for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car());
+            this.cars.add(new Car(0));
         }
     }
 
-    public void carMove() {
-        for (int i = 0; i < this.cars.size(); i++) {
-            this.cars.get(i).move(randomNumber0To9());
+    public CarsResultPerTry carMove(Cars cars) {
+        List<CarResult> carResultList = new ArrayList<>();
+
+        for (Car car : cars.getCars()) {
+            CarResult move = car.move(randomNumber0To9());
+            carResultList.add(move);
         }
+
+        return new CarsResultPerTry(carResultList);
     }
 
     public List<Car> getCars() {

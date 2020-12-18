@@ -17,13 +17,4 @@ class CarsTest {
         assertThat(this.cars.getCars().size()).isEqualTo(CAR_COUNT);
     }
 
-    @Test
-    @DisplayName("랜덤숫자가 0~9까지 나오는지 테스트")
-    void randomTest() {
-        assertThat(cars.randomNumber0To9()).isBetween(0,9);
-        assertThat(cars.randomNumber0To9()).isBetween(0,9);
-        assertThat(cars.randomNumber0To9()).isBetween(0,9);
-        assertThat(cars.randomNumber0To9()).isBetween(0,9);
-        assertThat(cars.randomNumber0To9()).isBetween(0,9);
-    }
 }
