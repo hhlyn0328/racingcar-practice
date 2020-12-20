@@ -5,13 +5,15 @@ import java.util.List;
 public class RacingApplication {
 
     public static void main(String[] args) {
-        int carCount = InputView.scannerCarCount();
+        String carNamesString = InputView.scannerCarNames();
         int tryCount = InputView.scannerTryCount();
 
         Race race = new Race();
-        Cars cars = race.readyCars(carCount);
+        Cars cars = race.readyCars(carNamesString);
         List<CarsResultPerTry> carsResultPerTryList = race.racing(cars, tryCount);
         ResultView.printResult(carsResultPerTryList);
+        ResultView.printWinner(race.raceWinner(carsResultPerTryList));
+
     }
 
 }

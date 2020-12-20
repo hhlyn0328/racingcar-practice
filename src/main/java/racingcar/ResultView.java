@@ -13,6 +13,22 @@ public class ResultView {
         }
     }
 
+    public static void printWinner(List<CarResult> carResultList) {
+        int index = 0;
+        for (CarResult carResult : carResultList) {
+            System.out.print(carResult.getCarName());
+            printComma(carResultList.size(), index);
+            index++;
+        }
+        System.out.print("가 최종우승 하였습니다.");
+    }
+
+    private static void printComma(int carResultListSize, int index) {
+        if (index < carResultListSize - 1) {
+            System.out.print(", ");
+        }
+    }
+
     private static void printCar(CarsResultPerTry carsResultPerTry) {
         for (CarResult carResult : carsResultPerTry.getCarResultList()) {
             printCarString(carResult);
@@ -20,6 +36,7 @@ public class ResultView {
     }
 
     private static void printCarString(CarResult carResult) {
+        System.out.print(carResult.getCarName() + " : ");
         for (int i = 0; i < carResult.getAdvanceCount(); i++) {
             System.out.print(CAR_STRING);
         }

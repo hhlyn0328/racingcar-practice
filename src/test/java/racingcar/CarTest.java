@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarTest {
 
-    private Car car = new Car(0);
+    private Car car = new Car("car1",0);
 
     @Test
     @DisplayName("랜덤 숫자가 4이상일 경우 전진횟수 증가 테스트")
@@ -43,5 +43,12 @@ class CarTest {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             this.car.validateRandomNumber(10);
         });
+    }
+
+    @Test
+    @DisplayName("자동차가 잘 생성되는지 테스트")
+    void createCar() {
+        assertThat(this.car.getCarName()).isEqualTo("carName1");
+
     }
 }
