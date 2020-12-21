@@ -1,22 +1,32 @@
 package race;
 
+
+
 public class Car {
-    private final static int LIMIT = 4;
+    private static final int LIMIT = 4;
+
+    private String carName;
     private int moveCount;
 
-    public Car(int move) {
-        this.moveCount = move;
+    public Car(String carName) {
+        this.carName = carName;
+        this.moveCount = 0;
     }
 
-    public int getMove() {
-        return this.moveCount;
-    }
 
     public CarRacingResult move(int number) {
-        if( number >= LIMIT) {
+        if(number >= LIMIT ) {
             this.moveCount += 1;
         }
-        return new CarRacingResult(this.moveCount);
-
+        return new CarRacingResult(this.carName, this.moveCount);
     }
+
+    public int getMoveCount() {
+        return this.moveCount;
+    }
+    public String getCarName() {
+        return carName;
+    }
+
+
 }
