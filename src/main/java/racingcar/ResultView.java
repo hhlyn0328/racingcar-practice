@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ResultView {
     private static final String CAR_STRING = "-";
+    private static final String CAR_SEPARATOR = " ,";
 
     public static void printResult(List<CarsResultPerTry> carsResultPerTryList) {
         System.out.println("실행결과");
@@ -13,20 +14,8 @@ public class ResultView {
         }
     }
 
-    public static void printWinner(List<CarResult> carResultList) {
-        int index = 0;
-        for (CarResult carResult : carResultList) {
-            System.out.print(carResult.getCarName());
-            printComma(carResultList.size(), index);
-            index++;
-        }
-        System.out.print("가 최종우승 하였습니다.");
-    }
-
-    private static void printComma(int carResultListSize, int index) {
-        if (index < carResultListSize - 1) {
-            System.out.print(", ");
-        }
+    public static void printWinner(List<String> winnerList) {
+        System.out.print(String.join(CAR_SEPARATOR, winnerList) + "가 최종우승 하였습니다.");
     }
 
     private static void printCar(CarsResultPerTry carsResultPerTry) {

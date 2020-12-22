@@ -9,11 +9,12 @@ public class Cars {
 
     private static final Random RANDOM = new Random();
     private static final int RANDOM_LIMIT_NUMBER = 10;
+    private static final String CAR_SEPARATOR = ",";
 
     private List<Car> cars = new ArrayList<>();
 
     public Cars(String carNamesString) {
-        String[] carNames = carNamesString.split(",");
+        String[] carNames = carNamesString.split(CAR_SEPARATOR);
         for (int i = 0; i < carNames.length; i++) {
             this.cars.add(new Car(carNames[i], 0));
         }
