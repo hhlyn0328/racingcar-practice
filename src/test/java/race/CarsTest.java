@@ -37,9 +37,9 @@ public class CarsTest {
 
     @Test
     void isNotOverCarNameLength5Test() {
-        String[] carNames =  {"sonata", "morning", "tusan"};
+        String[] names =  {"sonata", "morning", "tusan"};
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new Cars(carNames);
+            new Cars(names);
         });
     }
 

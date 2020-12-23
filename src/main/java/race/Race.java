@@ -19,13 +19,10 @@ public class Race {
         Cars cars = new Cars(carNames);
         for(int i=0 ; i< this.raceCount; i++) {
             carRacingResultsByRounds.add(cars.move(cars));
-
-            if(this.raceCount -1 == i) {
-                //마지막 라운드이면
-                finalRoundResult = new FinalRoundResult(carRacingResultsByRounds.get(i));
-                finalRoundResult.getWinnerCarNames();
-            }
         }
+        finalRoundResult = new FinalRoundResult(carRacingResultsByRounds.get(carRacingResultsByRounds.size()-1));
+        finalRoundResult.getWinners();
+
         racingAllResult = new RacingAllResult(carRacingResultsByRounds, finalRoundResult);
     }
 

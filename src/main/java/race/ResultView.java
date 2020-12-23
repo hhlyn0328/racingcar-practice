@@ -1,6 +1,8 @@
 package race;
 
 
+import java.util.stream.Collectors;
+
 public class ResultView {
     private final static String PRINT_TEXT = "-";
 
@@ -13,12 +15,7 @@ public class ResultView {
     }
 
     private static void printWinners(FinalRoundResult finalRoundResult) {
-        for(int i=0; i<finalRoundResult.getWinnerList().size(); i++) {
-            System.out.print(finalRoundResult.getWinnerList().get(i).getCarName());
-            if(i < finalRoundResult.getWinnerList().size()-1) {
-                System.out.print(",");
-            }
-        }
+        System.out.print(String.join(",", finalRoundResult.getWinnerNames()));
         System.out.println(" 가 최종 우승했습니다. ");
     }
 

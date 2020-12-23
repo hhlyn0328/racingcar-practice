@@ -4,6 +4,7 @@ package race;
 
 import javax.naming.SizeLimitExceededException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -21,10 +22,11 @@ public class Cars {
 
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
-        for(int i=0; i< carNames.length; i++) {
-            this.checkCarNameLength(carNames[i]);
-            cars.add(new Car(carNames[i]));
-        }
+        cars = Arrays.stream(carNames)
+                .map(carName -> {
+                    this.checkCarNameLength(carName);
+                    return new Car(carName);
+                }).collect(Collectors.toList());
     }
 
     private void checkCarNameLength(String carName) {
@@ -42,7 +44,7 @@ public class Cars {
     }
 
     private int randomNumber() {
-        int randomNumber = random.nextInt(9);
+        int randomNumber = random.nextInt(MAX_NUMBER);
         if (!isValidRandomNumber(randomNumber)) {
             throw new IllegalArgumentException();
         }

@@ -18,4 +18,8 @@ public class CarRacingResult {
         return moveCount;
     }
 
+    public boolean isWinner(int maxMoveCount) {
+        return this.moveCount == maxMoveCount;
+    }
+
 }
