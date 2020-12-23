@@ -7,12 +7,18 @@ public class Car {
 
     private String carName;
     private int moveCount;
+    private static final int CAR_NAME_LENGTH_LIMIT = 5;
 
     public Car(String carName) {
+        this.checkCarNameLength(carName);
         this.carName = carName;
         this.moveCount = 0;
     }
-
+    private void checkCarNameLength(String carName) {
+        if(carName.length() > CAR_NAME_LENGTH_LIMIT) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     public CarRacingResult move(int number) {
         if(number >= LIMIT ) {

@@ -2,7 +2,6 @@ package race;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class FinalRoundResult {
@@ -17,19 +16,19 @@ public class FinalRoundResult {
     }
 
     public void getWinners() {
-        OptionalInt maxMoveCountOptional  = this.finalRoundResult.getCarRacingResults().stream()
+        int maxMoveCount  = this.finalRoundResult.getCarRacingResults().stream()
                 .mapToInt(CarRacingResult::getMoveCount)
-                .max();
+                .max().orElse(0);
 
         winnerList = this.finalRoundResult.getCarRacingResults().stream()
-                .filter(carResult -> carResult.isWinner(maxMoveCountOptional.orElse(0)) )
+                .filter(carResult -> carResult.isWinner(maxMoveCount) )
                 .collect(Collectors.toList());
 
     }
 
     public List<String> getWinnerNames() {
         return winnerList.stream()
-                .map(winner -> winner.getCarName())
+                .map(CarRacingResult::getCarName)
                 .collect(Collectors.toList());
     }
 }

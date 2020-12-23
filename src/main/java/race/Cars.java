@@ -14,7 +14,6 @@ public class Cars {
     private static final Random random = new Random();
     private static final int MIN_NUMBER = 0;
     private static final int MAX_NUMBER = 9;
-    private static final int CAR_NAME_LENGTH_LIMIT = 5;
 
     public List<Car> getCars() {
         return cars;
@@ -23,16 +22,8 @@ public class Cars {
     public Cars(String[] carNames) {
         cars = new ArrayList<>();
         cars = Arrays.stream(carNames)
-                .map(carName -> {
-                    this.checkCarNameLength(carName);
-                    return new Car(carName);
-                }).collect(Collectors.toList());
-    }
-
-    private void checkCarNameLength(String carName) {
-        if(carName.length() > CAR_NAME_LENGTH_LIMIT) {
-            throw new IllegalArgumentException();
-        }
+                .map(carName -> new Car(carName))
+                .collect(Collectors.toList());
     }
 
     public CarRacingResultsByRound move(Cars cars) {
