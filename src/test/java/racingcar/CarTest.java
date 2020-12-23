@@ -13,7 +13,7 @@ class CarTest {
     @Test
     @DisplayName("랜덤 숫자가 4이상일 경우 전진횟수 증가 테스트")
     void advanceMove() {
-        assertThat(this.car.getAdvanceCount()).isEqualTo(1);
+        assertThat(this.car.getAdvanceCount()).isEqualTo(0);
 
         CarResult carResult = this.car.move(5);
         assertThat(carResult.getAdvanceCount()).isEqualTo(1);
@@ -48,7 +48,7 @@ class CarTest {
     @Test
     @DisplayName("자동차가 잘 생성되는지 테스트")
     void createCar() {
-        assertThat(this.car.getCarName()).isEqualTo("carName1");
+        assertThat(this.car.getCarName()).isEqualTo("car1");
 
     }
 }

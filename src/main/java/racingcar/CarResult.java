@@ -18,4 +18,8 @@ public class CarResult {
         return advanceCount;
     }
 
+    public boolean isWinner(int maxAdvanceCount) {
+        return this.advanceCount == maxAdvanceCount;
+    }
+
 }

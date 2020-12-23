@@ -13,8 +13,8 @@ public class RacingApplication {
         List<CarsResultPerTry> carsResultPerTryList = race.racing(cars, tryCount);
         ResultView.printResult(carsResultPerTryList);
 
-        CarsResultPerTry carsResultPerTry = new CarsResultPerTry();
-        ResultView.printWinner(carsResultPerTry.raceWinner(carsResultPerTryList));
+        RaceWinner raceWinner = new RaceWinner(carsResultPerTryList);
+        ResultView.printWinner(raceWinner.raceWinner());
 
     }
 

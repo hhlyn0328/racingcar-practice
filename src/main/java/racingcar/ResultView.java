@@ -5,6 +5,7 @@ import java.util.List;
 public class ResultView {
     private static final String CAR_STRING = "-";
     private static final String CAR_SEPARATOR = " ,";
+    private static final String CAR_NAME_COLON = " : ";
 
     public static void printResult(List<CarsResultPerTry> carsResultPerTryList) {
         System.out.println("실행결과");
@@ -25,7 +26,7 @@ public class ResultView {
     }
 
     private static void printCarString(CarResult carResult) {
-        System.out.print(carResult.getCarName() + " : ");
+        System.out.print(carResult.getCarName() + CAR_NAME_COLON);
         for (int i = 0; i < carResult.getAdvanceCount(); i++) {
             System.out.print(CAR_STRING);
         }
