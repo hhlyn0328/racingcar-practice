@@ -4,23 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Race {
-    private int raceCount;
-    private List<CarsRacingResultByRound> carsRacingResultByRounds = new ArrayList<>();
+
+    private final int raceCount;
+    private List<CarRacingResultsByRound> carRacingResultsByRounds = new ArrayList<>();
+    private FinalRoundResult finalRoundResult;
+    private RacingAllResult racingAllResult;
+
 
     public Race(int raceCount) {
         this.raceCount = raceCount;
     }
 
-    public void startRace(int carCount) {
-        Cars cars = new Cars(carCount);
-
-        for(int i=0; i< this.raceCount; i++) {
-            carsRacingResultByRounds.add(cars.move(cars));
+    public void startRace(String[] carNames) {
+        Cars cars = new Cars(carNames);
+        for(int i=0 ; i< this.raceCount; i++) {
+            carRacingResultsByRounds.add(cars.move(cars));
         }
+        finalRoundResult = new FinalRoundResult(carRacingResultsByRounds.get(carRacingResultsByRounds.size()-1));
+        finalRoundResult.getWinners();
+
+        racingAllResult = new RacingAllResult(carRacingResultsByRounds, finalRoundResult);
     }
 
-    public List<CarsRacingResultByRound> getRaceResult() {
-        return carsRacingResultByRounds;
+    public RacingAllResult getRacingAllResult() {
+        return racingAllResult;
     }
-
 }

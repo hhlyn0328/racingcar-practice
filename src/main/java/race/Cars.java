@@ -1,50 +1,48 @@
 package race;
 
+
+
+import javax.naming.SizeLimitExceededException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars;
-    private final static int MAX_NUMBER = 10;
-    private final static int MIN_NUMBER = 0;
-    private final static Random random = new Random();
-
-    public Cars(int carCount) {
-        cars = new ArrayList<>();
-        for(int i=0 ; i< carCount ; i++) {
-            cars.add(new Car(0));
-        }
-    }
-
-    public Cars(List<Car> cars) {
-        this.cars = cars;
-    }
+    private static final Random random = new Random();
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 9;
 
     public List<Car> getCars() {
-        return this.cars;
+        return cars;
     }
 
-    public CarsRacingResultByRound move(Cars cars) {
-        List<CarRacingResult> carRacingResults =  cars.getCars().stream()
+    public Cars(String[] carNames) {
+        cars = new ArrayList<>();
+        cars = Arrays.stream(carNames)
+                .map(carName -> new Car(carName))
+                .collect(Collectors.toList());
+    }
+
+    public CarRacingResultsByRound move(Cars cars) {
+        List<CarRacingResult> carRacingResults =
+        cars.getCars().stream()
                 .map(car -> car.move(this.randomNumber()))
                 .collect(Collectors.toList());
-
-        return new CarsRacingResultByRound(carRacingResults);
+        return new CarRacingResultsByRound(carRacingResults);
     }
 
-    public int randomNumber() {
-        int randomNumber = random.nextInt(9);
-        if (!validateNumber(randomNumber)) {
+    private int randomNumber() {
+        int randomNumber = random.nextInt(MAX_NUMBER);
+        if (!isValidRandomNumber(randomNumber)) {
             throw new IllegalArgumentException();
         }
         return randomNumber;
     }
 
-    public boolean validateNumber(int number) {
-        return  number >= MIN_NUMBER && number < MAX_NUMBER;
+    public boolean isValidRandomNumber(int random) {
+        return random >= MIN_NUMBER && random <= MAX_NUMBER;
     }
-
-
 }
