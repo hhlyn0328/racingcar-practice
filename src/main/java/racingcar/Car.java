@@ -7,10 +7,16 @@ public class Car {
 
     private static final int ADVANCE_STANDARD_NUMBER = 4;
 
+    private static final int CAR_NAME_LIMIT = 5;
+
     private String carName;
     private int advanceCount;
 
     public Car(String carName, int advanceCount) {
+        if (CAR_NAME_LIMIT < carName.length()) {
+            throw new IllegalArgumentException();
+        }
+
         this.carName = carName;
         this.advanceCount = advanceCount;
     }

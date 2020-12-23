@@ -49,6 +49,13 @@ class CarTest {
     @DisplayName("자동차가 잘 생성되는지 테스트")
     void createCar() {
         assertThat(this.car.getCarName()).isEqualTo("car1");
+    }
 
+    @Test
+    @DisplayName("자동차 이름 5자리 초과 생성시 Exception 테스트")
+    void createCarNameLengthOver() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            new Car("car123",0);
+        });
     }
 }

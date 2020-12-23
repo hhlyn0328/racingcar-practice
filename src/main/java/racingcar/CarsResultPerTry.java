@@ -18,7 +18,7 @@ public class CarsResultPerTry {
 
     public int maxAdvanceCount() {
         return this.carResultList.stream()
-                .mapToInt(CarResult::getAdvanceCount).max().getAsInt();
+                .mapToInt(CarResult::getAdvanceCount).max().orElse(0);
     }
 
 }

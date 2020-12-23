@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class RaceWinnerTest {
 
-    List<CarResult> carResultList = new ArrayList<>();
     private static final String CAR_SEPARATOR = ",";
 
     @Test
@@ -22,6 +21,14 @@ class RaceWinnerTest {
         carResultList.add(new CarResult("honux", 3));
         CarsResultPerTry carsResultPerTry = new CarsResultPerTry(carResultList);
         assertThat(carsResultPerTry.maxAdvanceCount()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("레이스의 최대 advanceCount 조회 Exception 테스트")
+    void maxAdvanceCountExceptionTest() {
+        List<CarResult> carResultList = new ArrayList<>();
+        CarsResultPerTry carsResultPerTry = new CarsResultPerTry(carResultList);
+        assertThat(carsResultPerTry.maxAdvanceCount()).isEqualTo(0);
     }
 
     @Test
