@@ -7,10 +7,22 @@ public class Car {
 
     private static final int ADVANCE_STANDARD_NUMBER = 4;
 
+    private static final int CAR_NAME_LIMIT = 5;
+
+    private String carName;
     private int advanceCount;
 
-    public Car(int advanceCount) {
+    public Car(String carName, int advanceCount) {
+        if (CAR_NAME_LIMIT < carName.length()) {
+            throw new IllegalArgumentException();
+        }
+
+        this.carName = carName;
         this.advanceCount = advanceCount;
+    }
+
+    public String getCarName() {
+        return carName;
     }
 
     public int getAdvanceCount() {
@@ -25,7 +37,7 @@ public class Car {
             this.advanceCount++;
         }
 
-        return new CarResult(this.advanceCount);
+        return new CarResult(this.carName, this.advanceCount);
     }
 
     public void validateRandomNumber(int randomNumber) {

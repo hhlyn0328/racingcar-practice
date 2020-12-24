@@ -3,27 +3,28 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Cars {
 
     private static final Random RANDOM = new Random();
     private static final int RANDOM_LIMIT_NUMBER = 10;
+    private static final String CAR_SEPARATOR = ",";
 
     private List<Car> cars = new ArrayList<>();
 
-    public Cars(int carCount) {
-        for (int i = 0; i < carCount; i++) {
-            this.cars.add(new Car(0));
+    public Cars(String carNamesString) {
+        String[] carNames = carNamesString.split(CAR_SEPARATOR);
+        for (int i = 0; i < carNames.length; i++) {
+            this.cars.add(new Car(carNames[i], 0));
         }
     }
 
     public CarsResultPerTry carMove(Cars cars) {
-        List<CarResult> carResultList = new ArrayList<>();
 
-        for (Car car : cars.getCars()) {
-            CarResult move = car.move(randomNumber0To9());
-            carResultList.add(move);
-        }
+        List<CarResult> carResultList = cars.getCars().stream()
+                .map(car -> car.move(randomNumber0To9()))
+                .collect(Collectors.toList());
 
         return new CarsResultPerTry(carResultList);
     }

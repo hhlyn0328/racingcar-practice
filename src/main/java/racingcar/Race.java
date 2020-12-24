@@ -5,18 +5,18 @@ import java.util.List;
 
 public class Race {
 
-    public Cars readyCars(int carCount) {
-        return new Cars(carCount);
+    public Cars readyCars(String carNamesString) {
+        return new Cars(carNamesString);
     }
 
     public List<CarsResultPerTry> racing(Cars cars, int tryCount) {
-        List<CarsResultPerTry> carsResultPerTryList = new ArrayList<>();
+        List<CarsResultPerTry> racingResult = new ArrayList<>();
 
         for (int i = 0; i < tryCount; i++) {
-            carsResultPerTryList.add(cars.carMove(cars));
+            racingResult.add(cars.carMove(cars));
         }
 
-        return carsResultPerTryList;
+        return racingResult;
     }
 
 }

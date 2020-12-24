@@ -8,12 +8,12 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarTest {
 
-    private Car car = new Car(0);
+    private Car car = new Car("car1",0);
 
     @Test
     @DisplayName("랜덤 숫자가 4이상일 경우 전진횟수 증가 테스트")
     void advanceMove() {
-        assertThat(this.car.getAdvanceCount()).isEqualTo(1);
+        assertThat(this.car.getAdvanceCount()).isEqualTo(0);
 
         CarResult carResult = this.car.move(5);
         assertThat(carResult.getAdvanceCount()).isEqualTo(1);
@@ -42,6 +42,20 @@ class CarTest {
     void randomMaxNumberTest() {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             this.car.validateRandomNumber(10);
+        });
+    }
+
+    @Test
+    @DisplayName("자동차가 잘 생성되는지 테스트")
+    void createCar() {
+        assertThat(this.car.getCarName()).isEqualTo("car1");
+    }
+
+    @Test
+    @DisplayName("자동차 이름 5자리 초과 생성시 Exception 테스트")
+    void createCarNameLengthOver() {
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            new Car("car123",0);
         });
     }
 }
